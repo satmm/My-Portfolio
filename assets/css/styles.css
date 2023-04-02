@@ -4,19 +4,15 @@
 :root {
   --header-height: 3rem;
   --font-semi: 600;
-  /*===== Colores =====*/
-  /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
-  /* HSL color mode */
+ 
   --hue-color: 224;
   --first-color: hsl(var(--hue-color), 89%, 60%);
   --second-color: hsl(var(--hue-color), 56%, 12%);
- 
   --body-font: 'Poppins', sans-serif;
   --big-font-size: 2rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: .938rem;
   --smaller-font-size: .75rem;
- 
   --mb-2: 1rem;
   --mb-4: 2rem;
   --mb-5: 2.5rem;
@@ -33,7 +29,6 @@
     --smaller-font-size: .875rem;
   }
 }
-
 
 *, ::before, ::after {
   box-sizing: border-box;
@@ -69,7 +64,6 @@ img {
   height: auto;
   display: block;
 }
-
 .section-title {
   position: relative;
   font-size: var(--h2-font-size);
@@ -167,7 +161,6 @@ img {
   cursor: pointer;
 }
 
-
 .active::after {
   position: absolute;
   content: '';
@@ -178,11 +171,9 @@ img {
   background-color: var(--first-color);
 }
 
-
 .show {
   right: 0;
 }
-
 
 .home {
   position: relative;
@@ -270,6 +261,7 @@ img {
   border-radius: .5rem;
 }
 
+
 .skills__container {
   row-gap: 2rem;
   text-align: center;
@@ -334,6 +326,7 @@ img {
   border-radius: .5rem;
 }
 
+/* ===== WORK =====*/
 .work__container {
   row-gap: 2rem;
 }
@@ -351,6 +344,7 @@ img {
 .work__img img:hover {
   transform: scale(1.1);
 }
+
 
 .contact__input {
   width: 100%;
