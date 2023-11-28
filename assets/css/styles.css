@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 :root {
@@ -19,6 +18,8 @@
   --mb-6: 3rem;
   --z-back: -10;
   --z-fixed: 100;
+  --dark-mode: #1c1c1c; /* Dark mode background color */
+  --dark-mode-text: #fff; /* Dark mode text color */
 }
 
 @media screen and (min-width: 968px) {
@@ -43,6 +44,8 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
+  background-color: var(--dark-mode-text);
+  transition: background-color 0.5s, color 0.5s;
 }
 
 h1, h2, p {
@@ -161,6 +164,20 @@ img {
   cursor: pointer;
 }
 
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: var(--second-color);
+  cursor: pointer;
+}
+
+.dark-mode-toggle:hover {
+  color: var(--first-color);
+}
+
 .active::after {
   position: absolute;
   content: '';
@@ -261,7 +278,6 @@ img {
   border-radius: .5rem;
 }
 
-
 .skills__container {
   row-gap: 2rem;
   text-align: center;
@@ -271,7 +287,7 @@ img {
   margin-bottom: var(--mb-2);
 }
 
-
+/* ... (existing code) ... */
 
 .skills__data {
   display: flex;
@@ -306,25 +322,22 @@ img {
   z-index: var(--z-back);
 }
 
-.skills__html {
-  width: 95%;
+/* Dark mode styles */
+.dark-mode .skills__data {
+  background-color: var(--dark-mode);
+  color: var(--dark-mode-text);
 }
 
-.skills__css {
-  width: 85%;
+.dark-mode .skills__bar {
+  background-color: var(--dark-mode-text);
 }
 
-.skills__js {
-  width: 65%;
+.dark-mode .home {
+  background-color: var(--dark-mode);
+  color: var(--dark-mode-text);
 }
 
-.skills__ux {
-  width: 85%;
-}
-
-.skills__img {
-  border-radius: .5rem;
-}
+/* ... (existing code) ... */
 
 /* ===== WORK =====*/
 .work__container {
