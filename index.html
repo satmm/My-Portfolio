@@ -10,6 +10,26 @@
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
         <title>My Portfolio</title>
+
+
+
+
+        <script>
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+if (isDarkMode) {
+  document.body.classList.add('dark-mode');
+}
+
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+
+  const newDarkModeState = document.body.classList.contains('dark-mode');
+  localStorage.setItem('darkMode', newDarkModeState);
+});
+
+          </script>
     </head>
     <body>
         <!--===== HEADER =====-->
@@ -26,7 +46,11 @@
                         <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                        
+
                     </ul>
+
+                    <i class="fas fa-moon dark-mode-toggle"></i>
                 </div>
 
                 <div class="nav__toggle" id="nav-toggle">
@@ -148,28 +172,63 @@
             <!--===== WORK =====-->
             <section class="work section" id="work">
                 <h2 class="section-title">Projects</h2>
-
                 <div class="work__container bd-grid">
-                    <a href="https://github.com/satmm/twitter-clone.git" target="_blank" class="work__img">
-                        <img src="assets/img/Project-1.jpg" alt="">
-                    </a>
-                    <a href="https://github.com/satmm/Student_Grievance_App.git" target="_blank" class="work__img">
-                        <img src="assets/img/Project-2.jpg" alt="">
-                    </a>
-                    <a href="https://github.com/satmm/IMDB-Clone.git" target="_blank" class="work__img">
-                        <img src="assets/img/Project-3.jpg" alt="">
-                    </a>
-                    <a href="https://github.com/satmm/ML-Project/blob/main/Day8.ipynb" target="_blank" class="work__img">
-                        <img src="assets/img/Project-4.jpg" alt="">
-                    </a>
-                    <a href="https://github.com/satmm/File-Security.git" target="_blank" class="work__img">
-                        <img src="assets/img/project-5.jpg" alt="">
-                    </a>
-                    <a href="https://github.com/satmm/My-Portfolio.git" target="_blank" class="work__img">
-                        <img src="assets/img/Project-6.jpg" alt="">
-                    </a>
+                  <div class="work__img">
+                    <img src="assets/img/Project-1.jpg" alt="">
+                    <div class="project-description">
+                      <h2>Twitter Clone</h2>
+                      <p>A fully functional Twitter clone built using React and Firebase.</p>
+                      <a href="https://github.com/satmm/twitter-clone.git" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
+              
+                  <div class="work__img">
+                    <img src="assets/img/Project-2.jpg" alt="">
+                    <div class="project-description">
+                      <h2>Student Grievance App</h2>
+                      <p>A web application for students to register and manage their grievances.</p>
+                      <a href="https://github.com/satmm/Student_Grievance_App.git" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
+              
+                  <div class="work__img">
+                    <img src="assets/img/Project-3.jpg" alt="">
+                    <div class="project-description">
+                      <h2>IMDB Clone</h2>
+                      <p>A responsive IMDB clone built using React and Redux.</p>
+                      <a href="https://github.com/satmm/IMDB-Clone.git" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
+              
+                  <div class="work__img">
+                    <img src="assets/img/Project-4.jpg" alt="">
+                    <div class="project-description">
+                      <h2>Machine Learning Project</h2>
+                      <p>A machine learning project on predicting customer churn.</p>
+                      <a href="https://github.com/satmm/ML-Project/blob/main/Day8.ipynb" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
+              
+                  <div class="work__img">
+                    <img src="assets/img/project-5.jpg" alt="">
+                    <div class="project-description">
+                      <h2>File Security</h2>
+                      <p>A web application for secure file sharing and encryption.</p>
+                      <a href="https://github.com/satmm/File-Security.git" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
+              
+                  <div class="work__img">
+                    <img src="assets/img/Project-6.jpg" alt="">
+                    <div class="project-description">
+                      <h2>Personal Portfolio</h2>
+                      <p>A responsive personal portfolio website built using React and CSS.</p>
+                      <a href="https://github.com/satmm/My-Portfolio.git" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
                 </div>
-            </section>
+              </section>
+              
 
 
 
@@ -187,6 +246,11 @@
                 </div>
             </section>
         </main>
+
+
+
+
+      
 
         <!--===== FOOTER =====-->
         <footer class="footer">

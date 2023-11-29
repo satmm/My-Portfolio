@@ -513,6 +513,29 @@ img {
     column-gap: 2rem;
   }
 }
+.work__img {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.work__img:hover .project-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 @media screen and (min-width: 992px) {
   .bd-grid {
