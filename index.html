@@ -8,35 +8,21 @@
 
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <script src='https://unpkg.com/boxicons@latest/dist/boxicons.js'></script>
 
         <title>My Portfolio</title>
 
 
-
-
-        <script>
-            const darkModeToggle = document.querySelector('.dark-mode-toggle');
-const isDarkMode = localStorage.getItem('darkMode') === 'true';
-
-if (isDarkMode) {
-  document.body.classList.add('dark-mode');
-}
-
-darkModeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-
-  const newDarkModeState = document.body.classList.contains('dark-mode');
-  localStorage.setItem('darkMode', newDarkModeState);
-});
-
-          </script>
     </head>
     <body>
         <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo"></a>
+                    <!-- <a href="./assets/img/Satyam-Logo.png" class="nav__logo"></a> -->
+                    <img src="./assets/img/Satyam-Logo-removebg-preview.png" alt="" width="200 px" height="150 px">
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
@@ -45,12 +31,12 @@ darkModeToggle.addEventListener('click', () => {
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Lets talk</a></li>
                         
 
                     </ul>
 
-                    <i class="fas fa-moon dark-mode-toggle"></i>
+                  
                 </div>
 
                 <div class="nav__toggle" id="nav-toggle">
@@ -64,29 +50,37 @@ darkModeToggle.addEventListener('click', () => {
             <section class="home bd-grid" id="home">
                 <div class="home__data">
                     
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Satyam Singh</span><br> Student</h1>
+                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Satyam Singh</span><br> <span class="auto-type"></span> </h1>
+                   
+                      <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+                      
+                      <script>
+                        var typed = new Typed(".auto-type", {
+                          strings: ['Student👨🏻‍🎓'],
+                          typeSpeed: 150,
+                          
+                        });
+                      </script>
+                      
 
-                    <!-- <a href="#" class="button">Resume</a> -->
-                    <a href="https://drive.google.com/file/d/1HQWDvkkbcVAZ9AoOEL2jr1rU5EuNFTAU/view?usp=sharing" target="_blank" class="button" >View Resume</a>
+                    
+                    <a href="https://drive.google.com/file/d/1HQWDvkkbcVAZ9AoOEL2jr1rU5EuNFTAU/view?usp=sharing" target="_blank" class="button" >View Resume <i class='bx bxs-file-pdf'></i></a>
                 </div>
 
                 <div class="home__social">
                     <a href="https://www.linkedin.com/in/satyam-singh-483673207/" target="_blank" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
                     <a href="https://github.com/satmm" target="_blank" class="home__social-icon"><i class='bx bxl-github' ></i></a>
                     <a href="https://twitter.com/Satyam_singh12" target="_blank" class="home__social-icon"><i class='bx bxl-twitter' ></i></a>
+                    
                 </div>
 
                 <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="50" y="60" href="assets/img/cccc-removebg-preview.png"/>
-                        </g>
-                    </svg>
+                   
+
+                    <img class="home__blob-img" src="./assets/img/web developer.webp"  alt="Developer image">
+
                 </div>
+
             </section>
 
             <!--===== ABOUT =====-->
@@ -111,27 +105,85 @@ darkModeToggle.addEventListener('click', () => {
 
                 <div class="skills__container bd-grid">          
                     <div>
-                        <h2 class="skills__subtitle">Technical Skills</h2>
+                       
                         
                         <div class="skills__data">
                             <div class="skills__names">
-                                <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">HTML5/CSS</span>
+                                <i class='bx bxl-react skills__icon'></i>
+                                <span class="skills__name">React</span>
                             </div>
                             <div class="skills__bar skills__html">
 
                             </div>
                             <div>
-                                <span class="skills__percentage">95%</span>
+                                <span class="skills__percentage">50%</span>
                             </div>
                         </div>
                         <div class="skills__data">
                             <div class="skills__names">
-                                <i class='bx bxl-css3 skills__icon'></i>
+                                <i class='bx bxl-java skills__icon'></i>
                                 <span class="skills__name">JAVA</span>
                             </div>
                             <div class="skills__bar skills__css">
                                 
+                            </div>
+                            <div>
+                                <span class="skills__percentage">80%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-javascript skills__icon' ></i>
+                                <span class="skills__name">javascript</span>
+                            </div>
+                            <div class="skills__bar skills__js">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">75%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-python skills__icon'></i>
+                                <span class="skills__name">Python</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">65%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-html5 skills__icon'></i>
+                                <span class="skills__name">HTML 5</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">90%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+
+
+
+                    <div>
+                        
+                        
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-firebase skills__icon'></i>
+                                <span class="skills__name">Firebase</span>
+                            </div>
+                            <div class="skills__bar skills__html">
+
                             </div>
                             <div>
                                 <span class="skills__percentage">85%</span>
@@ -139,8 +191,20 @@ darkModeToggle.addEventListener('click', () => {
                         </div>
                         <div class="skills__data">
                             <div class="skills__names">
-                                <i class='bx bxl-javascript skills__icon' ></i>
-                                <span class="skills__name">Pthon</span>
+                                <i class='bx bxl-git skills__icon'></i>
+                                <span class="skills__name">Git</span>
+                            </div>
+                            <div class="skills__bar skills__css">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">95%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-flask skills__icon' ></i>
+                                <span class="skills__name">Flask</span>
                             </div>
                             <div class="skills__bar skills__js">
                                 
@@ -151,8 +215,8 @@ darkModeToggle.addEventListener('click', () => {
                         </div>
                         <div class="skills__data">
                             <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">MYSQL</span>
+                                <i class='bx bxs-data skills__icon'></i>
+                                <span class="skills__name">MySQL</span>
                             </div>
                             <div class="skills__bar skills__ux">
                                 
@@ -161,10 +225,18 @@ darkModeToggle.addEventListener('click', () => {
                                 <span class="skills__percentage">85%</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div>              
-                        <img src="assets/img/work3.jpg" alt="image load error" class="skills__img">
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-css3 skills__icon'></i>
+                                <span class="skills__name">CSS 3</span>
+                            </div>
+                            <div class="skills__bar skills__css">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">80%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -177,7 +249,7 @@ darkModeToggle.addEventListener('click', () => {
                     <img src="assets/img/Project-1.jpg" alt="">
                     <div class="project-description">
                       <h2>Twitter Clone</h2>
-                      <p>A fully functional Twitter clone built using React and Firebase.</p>
+                      <p>Developed a functional Twitter clone with Next.js, Tailwind CSS, TypeScript, Supabase, and PostgreSQL. Features include user authentication, tweet posting, and interactive functionalities.</p>
                       <a href="https://github.com/satmm/twitter-clone.git" target="_blank">View on GitHub</a>
                     </div>
                   </div>
@@ -186,7 +258,7 @@ darkModeToggle.addEventListener('click', () => {
                     <img src="assets/img/Project-2.jpg" alt="">
                     <div class="project-description">
                       <h2>Student Grievance App</h2>
-                      <p>A web application for students to register and manage their grievances.</p>
+                      <p>Built an efficient Android app using XML, Java, and Firebase for students to submit and manage campus complaints. Streamlined administrative workflows for effective complaint resolution.</p>
                       <a href="https://github.com/satmm/Student_Grievance_App.git" target="_blank">View on GitHub</a>
                     </div>
                   </div>
@@ -195,7 +267,7 @@ darkModeToggle.addEventListener('click', () => {
                     <img src="assets/img/Project-3.jpg" alt="">
                     <div class="project-description">
                       <h2>IMDB Clone</h2>
-                      <p>A responsive IMDB clone built using React and Redux.</p>
+                      <p>Created a user-friendly React app with HTML, CSS, JavaScript, and ReactJS for real-time movie details. Integrated the Movie DB API, providing seamless movie browsing and searching.</p>
                       <a href="https://github.com/satmm/IMDB-Clone.git" target="_blank">View on GitHub</a>
                     </div>
                   </div>
@@ -203,8 +275,8 @@ darkModeToggle.addEventListener('click', () => {
                   <div class="work__img">
                     <img src="assets/img/Project-4.jpg" alt="">
                     <div class="project-description">
-                      <h2>Machine Learning Project</h2>
-                      <p>A machine learning project on predicting customer churn.</p>
+                      <h2>Heart Disease Prediction Model</h2>
+                      <p>Developed a Python-based machine learning models using Scikit-Learn, achieving accuracies of 85-90%. Utilized Logistic Regression, K-Nearest Neighbors, and Decision Tree algorithms for heart disease prediction.</p>
                       <a href="https://github.com/satmm/ML-Project/blob/main/Day8.ipynb" target="_blank">View on GitHub</a>
                     </div>
                   </div>
@@ -212,8 +284,8 @@ darkModeToggle.addEventListener('click', () => {
                   <div class="work__img">
                     <img src="assets/img/project-5.jpg" alt="">
                     <div class="project-description">
-                      <h2>File Security</h2>
-                      <p>A web application for secure file sharing and encryption.</p>
+                      <h2>File Security System</h2>
+                      <p>JAVA-based command prompt tool ensuring file security in networks. Employs AES for encryption/decryption and GZIP for compression, ensuring robust security without compromising network efficiency.</p>
                       <a href="https://github.com/satmm/File-Security.git" target="_blank">View on GitHub</a>
                     </div>
                   </div>
@@ -222,7 +294,7 @@ darkModeToggle.addEventListener('click', () => {
                     <img src="assets/img/Project-6.jpg" alt="">
                     <div class="project-description">
                       <h2>Personal Portfolio</h2>
-                      <p>A responsive personal portfolio website built using React and CSS.</p>
+                      <p>Designed a responsive HTML, CSS, and JavaScript portfolio website, offering a concise overview of my background, skills, and diverse projects. Explore for more insights into my work and technology stacks.</p>
                       <a href="https://github.com/satmm/My-Portfolio.git" target="_blank">View on GitHub</a>
                     </div>
                   </div>
@@ -234,15 +306,16 @@ darkModeToggle.addEventListener('click', () => {
 
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
+                <h2 class="section-title">Lets talk</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Send" class="contact__button button">
+                    <form action="https://formspree.io/f/xpzgvprk" method="POST" class="contact__form">
+                        <input type="text" name="Name" placeholder="Name" class="contact__input" required>
+                        <input type="email" name="_replyto" placeholder="Email" class="contact__input" required>
+                        <textarea name="Message" placeholder="Let's talk tech! Send a message,or just drop a quick 'hello'. Excited to connect! 🫱🏻‍🫲🏻" cols="30" rows="10" class="contact__input" required></textarea>
+                        <input type="submit" value="Send" class="contact__button button">
                     </form>
+                    
                 </div>
             </section>
         </main>
@@ -260,7 +333,7 @@ darkModeToggle.addEventListener('click', () => {
                 <a href="https://github.com/satmm" class="footer__icon"><i class='bx bxl-github' ></i></a>
                 <a href="https://twitter.com/Satyam_singh12" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
             </div>
-            <p class="footer__copy">&#169;  All rights reserved</p>
+            <p class="footer__copy">&#169;  In the realm of love ❤️, all rights blissfully reserved.</p>
         </footer>
 
 

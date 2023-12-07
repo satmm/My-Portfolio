@@ -18,8 +18,7 @@
   --mb-6: 3rem;
   --z-back: -10;
   --z-fixed: 100;
-  --dark-mode: #1c1c1c; /* Dark mode background color */
-  --dark-mode-text: #fff; /* Dark mode text color */
+  
 }
 
 @media screen and (min-width: 968px) {
@@ -164,33 +163,7 @@ img {
   cursor: pointer;
 }
 
-/* Dark mode toggle button */
-.dark-mode-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 1.5rem;
-  color: var(--second-color);
-  cursor: pointer;
-}
 
-.dark-mode-toggle:hover {
-  color: var(--first-color);
-}
-
-.active::after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 0.18rem;
-  left: 0;
-  top: 2rem;
-  background-color: var(--first-color);
-}
-
-.show {
-  right: 0;
-}
 
 .home {
   position: relative;
@@ -236,15 +209,10 @@ img {
   right: 0;
   bottom: 0;
   width: 260px;
+  
 }
 
-.home__blob {
-  fill: var(--first-color);
-}
 
-.home__blob-img {
-  width: 360px;
-}
 
 .button {
   display: inline-block;
@@ -275,6 +243,7 @@ img {
 
 .about__img img {
   width: 200px;
+ 
   border-radius: .5rem;
 }
 
@@ -283,11 +252,8 @@ img {
   text-align: center;
 }
 
-.skills__subtitle {
-  margin-bottom: var(--mb-2);
-}
 
-/* ... (existing code) ... */
+
 
 .skills__data {
   display: flex;
@@ -322,22 +288,7 @@ img {
   z-index: var(--z-back);
 }
 
-/* Dark mode styles */
-.dark-mode .skills__data {
-  background-color: var(--dark-mode);
-  color: var(--dark-mode-text);
-}
 
-.dark-mode .skills__bar {
-  background-color: var(--dark-mode-text);
-}
-
-.dark-mode .home {
-  background-color: var(--dark-mode);
-  color: var(--dark-mode-text);
-}
-
-/* ... (existing code) ... */
 
 /* ===== WORK =====*/
 .work__container {
@@ -380,7 +331,7 @@ img {
 }
 
 .footer {
-  background-color: var(--second-color);
+  background-color: black;
   color: #fff;
   text-align: center;
   font-weight: var(--font-semi);
@@ -438,6 +389,11 @@ img {
     align-items: center;
     text-align: initial;
   }
+
+
+
+  
+  
   .skills__container {
     grid-template-columns: .7fr;
     justify-content: center;
@@ -518,6 +474,8 @@ img {
   overflow: hidden;
 }
 
+
+
 .project-description {
   position: absolute;
   top: 0;
@@ -549,3 +507,17 @@ img {
     width: 450px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
