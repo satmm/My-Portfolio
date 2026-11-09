@@ -1012,3 +1012,140 @@ html {
   .penguin-walk { animation: none; left: 1.5rem; }
   .penguin, .penguin__foot, .penguin__wing, .penguin--lag svg { animation: none; }
 }
+
+/* penguin perched on the resume button, pointing at it */
+.resume-perch {
+  position: relative;
+  display: inline-block;
+}
+
+.resume-penguin {
+  position: absolute;
+  right: 1.35rem;
+  bottom: calc(100% - 8px);
+  width: 42px;
+  height: 44px;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  animation: perch-bob 2.4s ease-in-out infinite;
+  transition: transform .3s;
+}
+
+.resume-penguin svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.resume-penguin__flipper {
+  transform-box: fill-box;
+  transform-origin: 0 0;
+  animation: perch-point 1.2s ease-in-out infinite;
+}
+
+.resume-penguin__eyes {
+  animation: perch-blink 4s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.resume-bubble {
+  position: absolute;
+  right: calc(1.35rem + 44px);
+  bottom: calc(100% + 10px);
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(64, 112, 244, 0.25);
+  box-shadow: 0 4px 14px rgba(64, 112, 244, 0.15);
+  color: var(--first-color);
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  transform-origin: 100% 100%;
+  animation: perch-bubble 5s ease-in-out infinite;
+}
+
+.resume-bubble::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  bottom: 4px;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-right: 1px solid rgba(64, 112, 244, 0.25);
+  border-bottom: 1px solid rgba(64, 112, 244, 0.25);
+  transform: rotate(-45deg);
+}
+
+/* on hover the penguin cheers and the bubble says thanks */
+.resume-perch:hover .resume-penguin {
+  animation: perch-cheer .45s ease-in-out infinite alternate;
+}
+
+.resume-perch:hover .resume-penguin__flipper {
+  animation: perch-wave .25s ease-in-out infinite alternate;
+}
+
+.resume-perch:hover .resume-bubble {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes perch-bob {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-4deg); }
+}
+
+@keyframes perch-point {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(16deg); }
+}
+
+@keyframes perch-wave {
+  from { transform: rotate(-35deg); }
+  to   { transform: rotate(10deg); }
+}
+
+@keyframes perch-cheer {
+  from { transform: translateY(-2px); }
+  to   { transform: translateY(-9px); }
+}
+
+@keyframes perch-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(.1); }
+}
+
+@keyframes perch-bubble {
+  0%, 8%   { opacity: 0; transform: scale(.6); }
+  14%, 70% { opacity: 1; transform: scale(1); }
+  78%, 100% { opacity: 0; transform: scale(.8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-penguin, .resume-penguin__flipper, .resume-penguin__eyes,
+  .resume-perch:hover .resume-penguin, .resume-perch:hover .resume-penguin__flipper {
+    animation: none;
+  }
+  .resume-bubble { animation: none; opacity: 1; }
+}
+
+/* send button keeps its right alignment inside the perch */
+.send-perch {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.send-perch .resume-penguin {
+  right: .4rem;
+}
+
+.send-perch .resume-bubble {
+  right: calc(.4rem + 44px);
+  animation-delay: 1.5s;
+}

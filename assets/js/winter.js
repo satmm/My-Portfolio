@@ -54,6 +54,53 @@
         footer.prepend(parade);
     }
 
+    /* ---------- Penguins perched on buttons, nudging visitors ---------- */
+    function perchPenguin(target, { message, hat, envelope, extraClass = '' }) {
+        if (!target) return;
+        const perch = document.createElement('span');
+        perch.className = 'resume-perch ' + extraClass;
+        target.parentNode.insertBefore(perch, target);
+        perch.append(target);
+        const letter = envelope
+            ? `<g transform="translate(36 30) rotate(-12)">
+                 <rect x="0" y="0" width="12" height="8.5" rx="1.2" fill="#fff" stroke="#9fb3d6" stroke-width=".9"/>
+                 <path d="M.6 .8 L6 5 L11.4 .8" fill="none" stroke="#9fb3d6" stroke-width=".9"/>
+                 <path d="M6 6.6 c-.9-.8-1.8-1.4-1.8-2.1 a.9 .9 0 0 1 1.8-.2 a.9 .9 0 0 1 1.8 .2 c0 .7-.9 1.3-1.8 2.1z" fill="#f29bb0"/>
+               </g>`
+            : '';
+        perch.insertAdjacentHTML('beforeend', `
+<span class="resume-penguin" aria-hidden="true">
+  <svg viewBox="0 0 46 48" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="14" cy="45" rx="5" ry="2.6" fill="#f2b56b"/>
+    <ellipse cx="26" cy="45" rx="5" ry="2.6" fill="#f2b56b"/>
+    <ellipse cx="20" cy="30" rx="14" ry="15" fill="#7f97bd"/>
+    <ellipse cx="21" cy="32" rx="9" ry="11.5" fill="#fff"/>
+    <path d="M7 24 Q2 32 7 39 Q10 32 10 26 Z" fill="#7f97bd"/>
+    <g class="resume-penguin__flipper">
+      <path d="M30 23 Q41 26 44 37 Q38 33 30 30 Z" fill="#7f97bd"/>
+      ${letter}
+    </g>
+    <circle cx="20" cy="13" r="10" fill="#7f97bd"/>
+    <ellipse cx="22.5" cy="14.5" rx="6" ry="6.2" fill="#fff"/>
+    <g class="resume-penguin__eyes">
+      <circle cx="21.5" cy="14" r="1.7" fill="#3d4f6e"/><circle cx="26.5" cy="14" r="1.7" fill="#3d4f6e"/>
+      <circle cx="22" cy="13.4" r=".5" fill="#fff"/><circle cx="27" cy="13.4" r=".5" fill="#fff"/>
+    </g>
+    <path d="M22 17 L27 17 L24.5 20.5 Z" fill="#f2b56b"/>
+    <ellipse cx="18.5" cy="18.5" rx="1.8" ry="1" fill="#f6c3c9" opacity=".85"/>
+    <ellipse cx="29" cy="18.5" rx="1.6" ry="1" fill="#f6c3c9" opacity=".85"/>
+    <path d="M10 9 Q20 0 30 9 Q20 6 10 9 Z" fill="${hat}"/>
+    <circle cx="20" cy="2.6" r="2.6" fill="#fff"/>
+  </svg>
+</span>
+<span class="resume-bubble" aria-hidden="true">${message}</span>`);
+    }
+
+    perchPenguin(document.querySelector('.resume-button'), { message: 'Click me!', hat: '#4070f4' });
+    perchPenguin(document.querySelector('.contact__button'), {
+        message: 'Every hello makes my day!', hat: '#f29bb0', envelope: true, extraClass: 'send-perch',
+    });
+
     function penguinSvg({ body = '#8ea5c8', extra, hat, chick }) {
         // fluffy grey chick with a white face
         if (chick) body = '#c3cede';
