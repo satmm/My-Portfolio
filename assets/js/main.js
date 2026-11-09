@@ -75,15 +75,26 @@ function scrollActive(){
 }
 window.addEventListener('scroll', scrollActive)
 
+// Same slide-down + fade reveal, tuned to keep up with fast scrolling:
+// shorter animations, reveal as soon as an element peeks into view,
+// and a small stagger per section instead of one long page-wide chain.
 const sr = ScrollReveal({
     origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    delay: 200,
+    distance: '40px',
+    duration: 800,
+    delay: 0,
+    easing: 'cubic-bezier(.2, .7, .2, 1)',
+    viewFactor: 0.05,
+    mobile: true,
 //     reset: true
 });
 
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.about__highlights span, .experience__item, .skills__category, .skills__data, .work__img, .contact__input',{interval: 200}); 
+sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {delay: 100});
+sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', {delay: 200});
+sr.reveal('.home__social-icon', {interval: 80});
+sr.reveal('.about__highlights span', {interval: 60});
+sr.reveal('.experience__item', {interval: 80});
+sr.reveal('.skills__category', {interval: 60});
+sr.reveal('.skills__data', {interval: 40});
+sr.reveal('.work__img', {interval: 70});
+sr.reveal('.contact__input', {interval: 60});
