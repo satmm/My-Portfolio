@@ -32,6 +32,60 @@
     toggle.innerHTML = snowflakeIcon();
     document.body.append(toggle);
 
+    /* ---------- Penguins waddling along the footer snowdrift ---------- */
+    const footer = document.querySelector('.footer');
+    if (footer) {
+        const parade = document.createElement('div');
+        parade.className = 'penguin-parade';
+        parade.setAttribute('aria-hidden', 'true');
+        // Leader first: the parade walks right, so earlier = further ahead.
+        const family = [
+            { size: 'dad',   body: '#7f97bd', extra: 'scarf',  step: .52, delay: 0 },
+            { size: 'mom',   body: '#8ea5c8', extra: 'bow',    step: .48, delay: -.2 },
+            { size: 'kid',   body: '#9db2d2', extra: 'beanie', hat: '#8fb0f2', step: .38, delay: -.1 },
+            { size: 'kid',   body: '#a3b7d5', extra: 'beanie', hat: '#f5a3b5', step: .36, delay: -.27, gap: 'wide' },
+            { size: 'small', body: '#a9bcd8', extra: 'beanie', hat: '#9fd8c4', step: .32, delay: -.05 },
+            { size: 'small', body: '#adc0db', extra: 'earmuffs', step: .3, delay: -.18 },
+            { size: 'chick', chick: true, step: .26, delay: -.09, gap: 'lag' },
+        ];
+        parade.innerHTML = `<div class="penguin-walk">${family.map(p =>
+            `<div class="penguin penguin--${p.size}${p.gap ? ' penguin--' + p.gap : ''}" style="--step:${p.step}s;--delay:${p.delay}s">${penguinSvg(p)}</div>`
+        ).join('')}</div>`;
+        footer.prepend(parade);
+    }
+
+    function penguinSvg({ body = '#8ea5c8', extra, hat, chick }) {
+        // fluffy grey chick with a white face
+        if (chick) body = '#c3cede';
+        const belly = chick ? '#dde4ee' : '#fff';
+        const accessories = {
+            scarf: `<path d="M11 20 Q21 25 31 20 L31 24 Q21 29 11 24 Z" fill="#e57d7d"/>
+                    <path d="M14 23 l-3 10 l4 .5 l2 -9.5 Z" fill="#e57d7d"/>`,
+            bow: `<path d="M23 3 l-5 -3 v6 Z M23 3 l5 -3 v6 Z" fill="#f29bb0"/><circle cx="23" cy="3" r="1.6" fill="#e07a95"/>`,
+            beanie: `<path d="M11 9 Q21 1 31 9 Q21 6 11 9 Z" fill="${hat}"/><circle cx="21" cy="3" r="2.4" fill="#fff"/>`,
+            earmuffs: `<path d="M13 8 Q21 -1 29 8" stroke="#8b9dbb" stroke-width="1.4" fill="none"/>
+                       <circle cx="13" cy="10" r="3.2" fill="#f7d488"/><circle cx="29.5" cy="10" r="3.2" fill="#f7d488"/>`,
+        };
+        const fluff = chick
+            ? `<path d="M17 3 q2 -4 4 0 q2 -4 4 0" stroke="${body}" stroke-width="2" fill="none" stroke-linecap="round"/>`
+            : '';
+        return `<svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
+  <g class="penguin__foot penguin__foot--back"><ellipse cx="15" cy="49" rx="5" ry="2.4" fill="#f2b56b"/></g>
+  <g class="penguin__foot penguin__foot--front"><ellipse cx="25" cy="49" rx="5" ry="2.4" fill="#f2b56b"/></g>
+  <ellipse cx="20" cy="30" rx="13" ry="18" fill="${body}"/>
+  <ellipse cx="22" cy="33" rx="8.5" ry="13.5" fill="${belly}"/>
+  <path class="penguin__wing" d="M10 24 Q4 34 9 42 Q12 34 13 26 Z" fill="${body}"/>
+  ${fluff}
+  <circle cx="21" cy="13" r="10" fill="${body}"/>
+  <ellipse cx="24" cy="14" rx="5.5" ry="6" fill="#fff"/>
+  <circle cx="25.5" cy="12.5" r="${chick ? 2 : 1.7}" fill="#3d4f6e"/>
+  <circle cx="26" cy="12" r=".5" fill="#fff"/>
+  <path d="M29 14.5 L${chick ? 33 : 35} 16 L29 17.8 Z" fill="${chick ? '#9aa5b5' : '#f2b56b'}"/>
+  <ellipse cx="27" cy="18" rx="2" ry="1.1" fill="#f6c3c9" opacity=".8"/>
+  ${extra ? accessories[extra] : ''}
+</svg>`;
+    }
+
     /* ---------- Snowflake sprites (pre-rendered once) ---------- */
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 

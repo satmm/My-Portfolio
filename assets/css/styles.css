@@ -918,3 +918,97 @@ html {
     transition: none;
   }
 }
+
+/* penguins walking across the footer snowdrift */
+.penguin-parade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  height: 52px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.penguin-walk {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse; /* parent leads, babies follow */
+  gap: 7px;
+  animation: penguin-march 42s linear infinite;
+}
+
+.penguin {
+  width: 36px;
+  height: 47px;
+  transform-origin: 50% 100%;
+  animation: penguin-waddle var(--step, .5s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+.penguin svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.penguin--dad   { width: 38px; height: 50px; }
+.penguin--mom   { width: 34px; height: 45px; }
+.penguin--kid   { width: 26px; height: 34px; }
+.penguin--small { width: 22px; height: 29px; }
+.penguin--chick { width: 18px; height: 23px; }
+
+/* a little gap in the line, and a chick hurrying to catch up */
+.penguin--wide { margin-right: 8px; }
+.penguin--lag  { margin-right: 22px; }
+.penguin--lag svg { animation: penguin-hop .9s ease-in-out infinite; }
+
+.penguin__foot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: penguin-step var(--step, .5s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+.penguin__foot--back {
+  animation-direction: alternate-reverse;
+}
+
+.penguin__wing {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: penguin-flap 1s ease-in-out infinite alternate;
+}
+
+@keyframes penguin-march {
+  from { transform: translateX(-260px); }
+  to   { transform: translateX(100vw); }
+}
+
+@keyframes penguin-waddle {
+  from { transform: rotate(-7deg) translateY(0); }
+  to   { transform: rotate(7deg) translateY(-1.5px); }
+}
+
+@keyframes penguin-step {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2.5px); }
+}
+
+@keyframes penguin-hop {
+  0%, 60%, 100% { transform: translateY(0); }
+  75% { transform: translateY(-5px); }
+}
+
+@keyframes penguin-flap {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(14deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .penguin-walk { animation: none; left: 1.5rem; }
+  .penguin, .penguin__foot, .penguin__wing, .penguin--lag svg { animation: none; }
+}
