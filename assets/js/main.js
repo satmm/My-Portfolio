@@ -4,9 +4,44 @@ const showMenu = (toggleId, navId) =>{
     nav = document.getElementById(navId)
 
     if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
+        toggle.setAttribute('role', 'button')
+        toggle.setAttribute('tabindex', '0')
+        toggle.setAttribute('aria-label', 'Open menu')
+        toggle.setAttribute('aria-controls', navId)
+        toggle.setAttribute('aria-expanded', 'false')
+
+        toggle.addEventListener('click', (e)=>{
+            e.stopPropagation()
+            setMenu(!nav.classList.contains('show'))
         })
+        toggle.addEventListener('keydown', (e)=>{
+            if(e.key === 'Enter' || e.key === ' '){
+                e.preventDefault()
+                setMenu(!nav.classList.contains('show'))
+            }
+        })
+        // tap outside the menu, or press Escape, to close it
+        document.addEventListener('click', (e)=>{
+            if(nav.classList.contains('show') && !nav.contains(e.target)) setMenu(false)
+        })
+        document.addEventListener('keydown', (e)=>{
+            if(e.key === 'Escape') setMenu(false)
+        })
+    }
+}
+
+// open/close the mobile menu and swap the hamburger icon for an X
+function setMenu(open){
+    const nav = document.getElementById('nav-menu'),
+    toggle = document.getElementById('nav-toggle')
+    if(!nav || !toggle) return
+    nav.classList.toggle('show', open)
+    toggle.setAttribute('aria-expanded', String(open))
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
+    const icon = toggle.querySelector('i')
+    if(icon){
+        icon.classList.toggle('bx-menu', !open)
+        icon.classList.toggle('bx-x', open)
     }
 }
 showMenu('nav-toggle','nav-menu')
@@ -15,9 +50,8 @@ showMenu('nav-toggle','nav-menu')
 const navLink = document.querySelectorAll('.nav__link')
 
 function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show')
+    // When we click on each nav__link, close the menu
+    setMenu(false)
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
