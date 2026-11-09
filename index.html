@@ -55,12 +55,21 @@
                    
                       <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
                       
+                      <script src="assets/js/typed-mascots.js"></script>
+
                       <script>
+                        var BACK_DELAY = 2400;
                         var typed = new Typed(".auto-type", {
-                          strings: ['Btech Graduate👨🏻‍🎓','Software Engineer👨🏻‍💻'],
+                          strings: ['Btech Graduate', 'Software Engineer'],
                           typeSpeed: 150,
-                          
+                          backDelay: BACK_DELAY,
+                          // a cute penguin pops in after each phrase is typed
+                          onStringTyped: function (i) {
+                            TypedMascot.show(i);
+                            if (i === 0) setTimeout(TypedMascot.hide, BACK_DELAY - 200);
+                          }
                         });
+                        TypedMascot.attach(document.querySelector('.auto-type'));
                       </script>
                       
 

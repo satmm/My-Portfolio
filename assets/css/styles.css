@@ -1164,3 +1164,144 @@ html {
   right: calc(.4rem + 44px);
   animation-delay: 1.5s;
 }
+
+/*===== TYPED MASCOTS (penguin next to the typewriter text) =====*/
+.typed-mascot {
+  display: inline-block;
+  vertical-align: -0.18em;
+  margin-left: .15em;
+  line-height: 0;
+  transform-origin: 50% 100%;
+}
+
+.typed-mascot .mascot {
+  height: 1.2em;
+  width: auto;
+  overflow: visible;
+}
+
+.typed-mascot.is-on {
+  animation: mascot-pop .55s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+.typed-mascot.is-off {
+  animation: mascot-out .25s ease-in both;
+}
+
+.typed-mascot.is-on .mascot {
+  animation: mascot-bounce 2.2s ease-in-out .6s infinite;
+  transform-origin: 50% 100%;
+}
+
+.mascot * {
+  transform-box: fill-box;
+}
+
+.mascot__tassel {
+  transform-origin: 0% 0%;
+  animation: mascot-tassel 1.4s ease-in-out infinite alternate;
+}
+
+.mascot__arm {
+  transform-origin: 0% 100%;
+  animation: mascot-cheer .9s ease-in-out infinite alternate;
+}
+
+.mascot__flip {
+  transform-origin: 50% 0%;
+  animation: mascot-type .22s ease-in-out infinite alternate;
+}
+
+.mascot__flip--r {
+  animation-delay: -.11s;
+}
+
+.mascot__eyes {
+  transform-origin: center;
+  animation: mascot-blink 3.5s infinite;
+}
+
+.mascot__glow {
+  animation: mascot-glow 1.6s ease-in-out infinite alternate;
+}
+
+.mascot__code {
+  animation: mascot-code 2.4s ease-out infinite;
+}
+
+.mascot__steam {
+  animation: mascot-steam 2s ease-in-out infinite;
+}
+
+.mascot__spark {
+  transform-origin: center;
+  animation: mascot-twinkle 1.6s ease-in-out infinite;
+}
+
+.mascot__spark--2 {
+  animation-delay: -.8s;
+}
+
+@keyframes mascot-twinkle {
+  0%, 100% { opacity: .2; transform: scale(.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(45deg); }
+}
+
+@keyframes mascot-pop {
+  0%   { opacity: 0; transform: scale(0) rotate(-20deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes mascot-out {
+  to { opacity: 0; transform: scale(0); }
+}
+
+@keyframes mascot-bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3%) rotate(-3deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-3%) rotate(3deg); }
+}
+
+@keyframes mascot-tassel {
+  from { transform: rotate(-8deg); }
+  to   { transform: rotate(10deg); }
+}
+
+@keyframes mascot-cheer {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-10deg); }
+}
+
+@keyframes mascot-type {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2px); }
+}
+
+@keyframes mascot-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(.1); }
+}
+
+@keyframes mascot-glow {
+  from { opacity: .15; }
+  to   { opacity: .4; }
+}
+
+@keyframes mascot-code {
+  0%   { opacity: 0; transform: translate(0, 4px); }
+  20%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(4px, -10px); }
+}
+
+@keyframes mascot-steam {
+  0%, 100% { opacity: .2; transform: translateY(1px); }
+  50% { opacity: .9; transform: translateY(-1.5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typed-mascot.is-on, .typed-mascot.is-on .mascot, .mascot * {
+    animation: none !important;
+  }
+}
