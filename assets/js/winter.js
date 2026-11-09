@@ -197,7 +197,7 @@
     }
 
     const DOTS = [1.2, 1.8, 2.4, 3.2].map(makeDotSprite);
-    const CRYSTALS = [6, 8, 10].map(makeCrystalSprite);
+    const CRYSTALS = [5, 6.5, 8, 9.5, 11.5].map(makeCrystalSprite);
 
     /* ---------- Flakes ---------- */
     const ctx = canvas.getContext('2d');
@@ -206,9 +206,12 @@
     // depth: 0 = far (small, slow, faint)  ->  1 = near (big, fast, bright)
     function createFlake(randomY) {
         const depth = Math.random() ** 1.6; // most flakes far away
-        const isCrystal = depth > 0.8 && Math.random() < 0.55;
+        // flower-like crystals from mid-depth forward; nearer = bigger
+        const isCrystal = depth > 0.3 && Math.random() < 0.75;
+        const crystalIdx = Math.min(CRYSTALS.length - 1,
+            Math.floor(((depth - 0.3) / 0.7) * CRYSTALS.length + Math.random() * 0.8));
         const sprite = isCrystal
-            ? CRYSTALS[Math.floor(Math.random() * CRYSTALS.length)]
+            ? CRYSTALS[crystalIdx]
             : DOTS[Math.min(DOTS.length - 1, Math.floor(depth * DOTS.length))];
         return {
             x: Math.random() * W,
@@ -222,7 +225,7 @@
             phase: Math.random() * Math.PI * 2,
             rot: Math.random() * Math.PI * 2,
             vrot: (Math.random() - 0.5) * 0.8,
-            alpha: 0.45 + depth * 0.5,
+            alpha: isCrystal ? 0.6 + depth * 0.38 : 0.45 + depth * 0.5,
             pushX: 0,
             pushY: 0,
         };
@@ -237,7 +240,7 @@
         canvas.style.height = H + 'px';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        const target = Math.round(Math.min(170, Math.max(45, (W * H) / 9000)));
+        const target = Math.round(Math.min(240, Math.max(95, (W * H) / 6000)));
         while (flakes.length < target) flakes.push(createFlake(true));
         flakes.length = target;
     }
