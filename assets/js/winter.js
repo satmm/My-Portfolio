@@ -96,7 +96,7 @@
 <span class="resume-bubble" aria-hidden="true">${message}</span>`);
     }
 
-    perchPenguin(document.querySelector('.resume-button'), { message: 'Click me!', hat: '#4070f4' });
+    perchPenguin(document.querySelector('.resume-button'), { message: 'Hire me!', hat: '#4070f4' });
     perchPenguin(document.querySelector('.contact__button'), {
         message: 'Every hello makes my day!', hat: '#f29bb0', envelope: true, extraClass: 'send-perch',
     });

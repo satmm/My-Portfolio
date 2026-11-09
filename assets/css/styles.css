@@ -1701,6 +1701,23 @@ html {
   transform-origin: 50% 100%;
 }
 
+/* graduate: only the head + cap sway, pivoting at the neck */
+.typed-mascot.is-on .mascot--grad {
+  animation: none;
+}
+
+.mascot .mascot__upper {
+  transform-box: view-box;
+  transform-origin: 29px 40px;
+  animation: mascot-sway 2.4s ease-in-out infinite;
+}
+
+@keyframes mascot-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+
 .mascot * {
   transform-box: fill-box;
 }
